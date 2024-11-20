@@ -1,0 +1,185 @@
+<!DOCTYPE html
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tempo Desde Que Nos Conhecemos</title>
+    <style>
+        body {
+            font-family: 'cursive', 'Arial', sans-serif;
+            background-color: #ffcbdd;
+            background-image: linear-gradient(to top, #fce4ec, #f8bbd0);
+            color: #444;
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            color: #e91e63;
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 20px;
+            display: inline-block;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .contador {
+            font-size: 24px;
+            margin: 20px 0;
+            font-weight: bold;
+            color: #d81b60;
+        }
+
+        .image-container {
+            margin: 30px 0;
+        }
+
+        img {
+            max-width: 90%;
+            height: auto;
+            border-radius: 15px;
+            transition: opacity 1s ease-in-out;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .mensagem {
+            font-size: 18px;
+            color: #ffffff;
+            background-color: #d695b8;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #f06292;
+            width: 90%;
+            max-width: 600px;
+            margin: 30px auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            line-height: 1.6;
+            text-align: left;
+            font-weight: normal;
+        }
+
+        .footer {
+            margin-top: 50px;
+            font-size: 14px;
+            color: #999;
+        }
+
+        /* Animação de corações caindo */
+        .heart-fall {
+            position: fixed;
+            color: #f06292;
+            font-size: 20px;
+            top: -50px;
+            animation: fall 5s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Música -->
+    <audio autoplay loop>
+        <source src="https://www.dropbox.com/scl/fi/enw3ksrk7z0oqm4dq2p4z/C-pia-de-Djavan-Um-Amor-Puro-udio-Oficial.mp3?rlkey=610g490gw47o9sv1plsdt06zi&st=u3ewb2k8&raw=1" type="audio/mpeg">
+        Seu navegador não suporta a tag de áudio.
+    </audio>
+
+    <h1> Desde o Primeiro Olhar </h1>
+
+    <!-- Contador de tempo -->
+    <div class="contador" id="contador"></div>
+
+    <!-- Imagens do casal -->
+    <div class="image-container">
+        <img id="imagem" src="https://via.placeholder.com/600x300?text=Imagem+1" alt="Imagem do Casal">
+    </div>
+
+    <!-- Caixa de mensagem -->
+    <div class="mensagem">
+        <p>Você já parou pra pensar em como tudo mudou desde que nos conhecemos? Parece que minha vida ganhou mais cor, mais sentido. Quero te agradecer, sabe? Por ser você. Por me fazer sentir amada de um jeito que eu nunca senti antes, por cada gesto, cada palavra, por simplesmente existir.</p>
+        <p>Quero que você saiba que eu tô aqui, sempre. Pra te amar,te apoiar em tudo,e cuidar de você, em qualquer momento, seja nos dias bons ou nos difíceis. Você trouxe uma luz que eu nem sabia que precisava, e agora eu não consigo imaginar meus dias sem você.</p>
+        <p>Eu amo tanto cada detalhe seu... O jeito que você me olha, como me faz rir das coisas mais bobas, o conforto que sinto ao estar com você,é como se o mundo todo pudesse esperar enquanto estamos juntas.</p>
+        <p>Obrigada por ser você, por trazer tanta coisa boa pra minha vida, por me ensinar tanto sobre o amor. Eu te amo mais do que qualquer palavra poderia explicar. 💗</p>
+    </div>
+
+    <div class="footer">Feito com amor para alguém especial! 💕</div>
+
+    <script>
+        // Função para calcular o tempo desde o encontro
+        function calcularTempo() {
+            const dataInicio = new Date(2024, 8, 15); // 15 de setembro de 2024
+            const dataAtual = new Date();
+
+            const tempoDiferenca = dataAtual - dataInicio;
+
+            const anos = Math.floor(tempoDiferenca / (1000 * 60 * 60 * 24 * 365));
+            const meses = Math.floor((tempoDiferenca % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
+            const dias = Math.floor((tempoDiferenca % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((tempoDiferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutos = Math.floor((tempoDiferenca % (1000 * 60 * 60)) / (1000 * 60));
+            const segundos = Math.floor((tempoDiferenca % (1000 * 60)) / 1000);
+
+            document.getElementById('contador').innerText = 
+                `Já se passaram ${anos} anos, ${meses} meses, ${dias} dias, ` +
+                `${horas} horas, ${minutos} minutos e ${segundos} segundos desde que nos conhecemos!`;
+        }
+
+        calcularTempo();
+        setInterval(calcularTempo, 1000); // Atualiza a cada 1 segundo
+
+        // Troca de imagens
+        let imagemIndex = 0;
+        const imagens = [
+            "https://i.postimg.cc/k5CnNdyX/Whats-App-Image-2024-11-19-at-18-52-19.jpg",
+            "https://i.postimg.cc/ht2Bm7hM/Whats-App-Image-2024-11-19-at-18-52-17.jpg"
+        ];
+
+        function trocarImagem() {
+            const imagem = document.getElementById('imagem');
+            imagem.style.opacity = 0; // Fade-out
+            setTimeout(() => {
+                imagemIndex = (imagemIndex + 1) % imagens.length;
+                imagem.src = imagens[imagemIndex];
+                imagem.style.opacity = 1; // Fade-in
+            }, 1000);
+        }
+
+        setInterval(trocarImagem, 5000);
+
+        // Função para criar corações caindo
+        function criarCoracoes() {
+            const quantidade = 30;
+            for (let i = 0; i < quantidade; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart-fall');
+                heart.innerText = '🩷';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.fontSize = Math.random() * 20 + 20 + 'px';
+                heart.style.animationDelay = Math.random() * 5 + 's';
+                document.body.appendChild(heart);
+
+                // Remove o coração depois que a animação termina
+                setTimeout(() => heart.remove(), 5000);
+            }
+        }
+
+        criarCoracoes();
+    </script>
+
+</body>
+</html>
